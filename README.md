@@ -1,6 +1,5 @@
 Here's a README.md that explains what we've built:
 
-```markdown
 # Civic Auth Web3 Wallet Demo
 
 A demonstration of Civic Auth integration with Web3 functionality, showcasing authentication and embedded wallet features. This project was built as part of Civic's alpha testing program.
@@ -134,6 +133,3 @@ Special thanks to the Civic team for providing the authentication and wallet inf
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-```
-
-This README provides a comprehensive overview of what we've built, how to set it up, and its connection to Civic's alpha testing program. Would you like me to expand on any section or add additional information?
