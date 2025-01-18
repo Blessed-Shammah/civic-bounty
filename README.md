@@ -1,6 +1,4 @@
-Here's a README.md that explains what we've built:
-
-# Civic Auth Web3 Wallet Demo
+# Civic Auth Web3 Wallet Demo: [https://civic-dapp.vercel.app/]
 
 A demonstration of Civic Auth integration with Web3 functionality, showcasing authentication and embedded wallet features. This project was built as part of Civic's alpha testing program.
 
