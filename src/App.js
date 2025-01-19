@@ -27,7 +27,7 @@ function App() {
         <CivicAuthProvider clientId={process.env.REACT_APP_CIVIC_CLIENT_ID}>
           <div className="app-container">
             <div className="app-header">
-              <h1>Civic Web3 Wallet Demo</h1>
+              <h1>Civic Web3 Wallet</h1>
               <UserButton />
             </div>
             <WalletComponent />
