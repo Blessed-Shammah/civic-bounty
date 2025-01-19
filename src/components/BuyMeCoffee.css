@@ -1,0 +1,154 @@
+/* src/components/BuyMeCoffee.css */
+.buy-coffee-container {
+  padding: 20px;
+  border-radius: 12px;
+  background: white;
+  margin: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.buy-coffee-container h2 {
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.coffee-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.coffee-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.coffee-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.coffee-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.coffee-button span:first-child {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.coffee-button span:last-child {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.message {
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  animation: slideIn 0.3s ease-out;
+}
+
+.message.success {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.message.error {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.share-button {
+  background: #1DA1F2;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px auto;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.share-button:hover {
+  background: #1a8cd8;
+}
+
+.coffee-qr {
+  margin: 20px auto;
+  padding: 15px;
+  background: #f9fafb;
+  border-radius: 8px;
+  display: inline-block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.coffee-qr p {
+  margin-top: 10px;
+  color: #6b7280;
+}
+
+.qr-toggle-button {
+  background: none;
+  border: 2px solid #6366f1;
+  color: #6366f1;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.qr-toggle-button:hover {
+  background: #6366f1;
+  color: white;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .coffee-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .buy-coffee-container {
+    margin: 10px;
+    padding: 15px;
+  }
+}

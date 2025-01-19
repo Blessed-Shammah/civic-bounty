@@ -6,6 +6,8 @@ import { useConnect, useAccount, useBalance, useSendTransaction } from 'wagmi';
 import { QRCodeSVG } from 'qrcode.react';
 import { FaCopy, FaQrcode, FaWallet, FaEthereum, FaPaperPlane, FaSpinner } from 'react-icons/fa';
 import './WalletComponent.css';
+import BuyMeCoffee from './BuyMeCoffee';
+import { OWNER_ADDRESS } from '../constants/addresses';
 
 function WalletComponent() {
   const [amount, setAmount] = useState('');
@@ -144,6 +146,9 @@ function WalletComponent() {
               : <FaSpinner className="icon-spin" />}
           </p>
         </div>
+        {isConnected && (
+          <BuyMeCoffee recipientAddress={OWNER_ADDRESS} />
+        )}
 
         {isConnected ? (
           <div className="send-form glass-effect">
