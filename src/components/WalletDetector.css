@@ -1,0 +1,119 @@
+/* src/components/WalletDetector.css */
+.wallet-detector {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wallet-detector h3 {
+    margin: 0 0 20px 0;
+    color: #374151;
+    text-align: center;
+  }
+  
+  .scanning {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+  }
+  
+  .spin {
+    animation: spin 1s linear infinite;
+    font-size: 24px;
+    color: #6366f1;
+  }
+  
+  .wallet-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  
+  .wallet-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  
+  .wallet-option:hover {
+    border-color: #6366f1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(99, 102, 241, 0.1);
+  }
+  
+  .wallet-icon {
+    font-size: 24px;
+    color: #6366f1;
+  }
+  
+  .wallet-name {
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .installed-badge {
+    position: absolute;
+    right: 10px;
+    color: #10b981;
+    font-size: 18px;
+  }
+  
+  .no-wallets {
+    text-align: center;
+    padding: 30px;
+    color: #6b7280;
+  }
+  
+  .no-wallets svg {
+    font-size: 32px;
+    color: #ef4444;
+    margin-bottom: 10px;
+  }
+  
+  .wallet-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .wallet-links a {
+    color: #6366f1;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid #6366f1;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  
+  .wallet-links a:hover {
+    background: #6366f1;
+    color: white;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  @media (max-width: 768px) {
+    .wallet-list {
+      grid-template-columns: 1fr;
+    }
+    
+    .wallet-links {
+      flex-direction: column;
+      align-items: center;
+    }
+  }

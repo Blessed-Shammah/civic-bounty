@@ -18,6 +18,104 @@
   font-size: 1.5rem;
 }
 
+.wallet-address-section {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.wallet-address-section h3 {
+  color: #4b5563;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.address-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  word-break: break-all;
+  font-size: 0.9rem;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  color: #6366f1;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.icon-button:hover {
+  background: #f3f4f6;
+}
+
+.payment-options {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.option-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 2px solid #6366f1;
+  background: white;
+  color: #6366f1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.option-button:hover {
+  background: #6366f1;
+  color: white;
+}
+
+.external-wallets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+  animation: slideDown 0.3s ease-out;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.wallet-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.wallet-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
 .coffee-options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -36,6 +134,7 @@
   color: white;
   cursor: pointer;
   transition: all 0.2s ease;
+  position: relative;
 }
 
 .coffee-button:hover {
@@ -60,6 +159,29 @@
   opacity: 0.9;
 }
 
+.coffee-qr {
+  margin: 20px auto;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 8px;
+  display: inline-block;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.coffee-qr p {
+  margin-top: 10px;
+  color: #6b7280;
+}
+
+.qr-prices {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
 .message {
   padding: 15px;
   border-radius: 8px;
@@ -77,6 +199,26 @@
   color: #dc2626;
 }
 
+.transaction-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.view-transaction {
+  color: #6366f1;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: white;
+  transition: all 0.2s;
+}
+
+.view-transaction:hover {
+  background: #f3f4f6;
+}
+
 .share-button {
   background: #1DA1F2;
   color: white;
@@ -87,7 +229,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 10px auto;
   font-size: 0.9rem;
   transition: background-color 0.2s;
 }
@@ -96,34 +237,14 @@
   background: #1a8cd8;
 }
 
-.coffee-qr {
-  margin: 20px auto;
-  padding: 15px;
-  background: #f9fafb;
-  border-radius: 8px;
-  display: inline-block;
-  animation: fadeIn 0.3s ease-out;
+.icon-spin {
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
 }
 
-.coffee-qr p {
-  margin-top: 10px;
-  color: #6b7280;
-}
-
-.qr-toggle-button {
-  background: none;
-  border: 2px solid #6366f1;
-  color: #6366f1;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.qr-toggle-button:hover {
-  background: #6366f1;
-  color: white;
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes slideIn {
@@ -134,6 +255,17 @@
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -151,4 +283,91 @@
     margin: 10px;
     padding: 15px;
   }
+
+  .payment-options {
+    flex-direction: column;
+  }
+
+  .transaction-actions {
+    flex-direction: column;
+  }
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Add to BuyMeCoffee.css */
+.wallet-status {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.connected-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.connected-status span {
+  font-family: monospace;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #4b5563;
+}
+
+.disconnect-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.disconnect-button:hover {
+  background: #dc2626;
+}
+
+.connect-wallet-options {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.wallet-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.wallet-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.wallet-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }

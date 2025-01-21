@@ -2,12 +2,21 @@
 import React, { useState } from 'react';
 import { useUser } from '@civic/auth-web3/react';
 import { userHasWallet } from '@civic/auth-web3';
-import { useConnect, useAccount, useBalance, useSendTransaction } from 'wagmi';
+import { useAccount, useBalance, useSendTransaction, useDisconnect } from 'wagmi';
 import { QRCodeSVG } from 'qrcode.react';
-import { FaCopy, FaQrcode, FaWallet, FaEthereum, FaPaperPlane, FaSpinner } from 'react-icons/fa';
+import { 
+  FaCopy, 
+  FaQrcode, 
+  FaWallet, 
+  FaEthereum, 
+  FaPaperPlane, 
+  FaSpinner,
+  FaSignOutAlt 
+} from 'react-icons/fa';
 import './WalletComponent.css';
 import BuyMeCoffee from './BuyMeCoffee';
 import { OWNER_ADDRESS } from '../constants/addresses';
+import WalletDetector from './WalletDetector';
 
 function WalletComponent() {
   const [amount, setAmount] = useState('');
@@ -16,10 +25,11 @@ function WalletComponent() {
   const [success, setSuccess] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showQR, setShowQR] = useState(false);
+  const [showWalletDetector, setShowWalletDetector] = useState(false);
 
   const userContext = useUser();
-  const { connect, connectors } = useConnect();
-  const { isConnected } = useAccount();
+  const { address, isConnected } = useAccount();
+  const { disconnect } = useDisconnect();
   const { sendTransaction } = useSendTransaction();
   
   const balance = useBalance({
@@ -67,7 +77,7 @@ function WalletComponent() {
       <div className="wallet-container glass-effect">
         <div className="login-prompt">
           <FaWallet className="wallet-icon" />
-          <h2>Welcome to Civic Web3 Wallet</h2>
+          <h2>Welcome to Crypto Wallet</h2>
           <p>Please log in to access your wallet</p>
         </div>
       </div>
@@ -110,6 +120,27 @@ function WalletComponent() {
       </div>
 
       <div className="wallet-card">
+        {/* Connection Status */}
+        <div className="connection-status">
+          {isConnected ? (
+            <div className="connected-info">
+              <span>Connected: {address?.slice(0, 6)}...{address?.slice(-4)}</span>
+              <button onClick={() => disconnect()} className="disconnect-button">
+                <FaSignOutAlt /> Disconnect
+              </button>
+            </div>
+          ) : (
+            <button 
+              onClick={() => setShowWalletDetector(!showWalletDetector)} 
+              className="connect-wallet-button"
+            >
+              <FaWallet /> Connect Wallet
+            </button>
+          )}
+        </div>
+
+        {showWalletDetector && !isConnected && <WalletDetector />}
+
         <div className="wallet-header">
           <h3><FaWallet className="icon" /> Wallet Details</h3>
           <div className="address-actions">
@@ -146,11 +177,12 @@ function WalletComponent() {
               : <FaSpinner className="icon-spin" />}
           </p>
         </div>
+
         {isConnected && (
           <BuyMeCoffee recipientAddress={OWNER_ADDRESS} />
         )}
 
-        {isConnected ? (
+        {isConnected && (
           <div className="send-form glass-effect">
             <h3><FaPaperPlane className="icon" /> Send ETH</h3>
             <form onSubmit={handleSendTransaction}>
@@ -196,13 +228,6 @@ function WalletComponent() {
               </button>
             </form>
           </div>
-        ) : (
-          <button 
-            onClick={() => connect({ connector: connectors[0] })}
-            className="connect-button"
-          >
-            <FaWallet /> Connect Wallet
-          </button>
         )}
       </div>
     </div>
